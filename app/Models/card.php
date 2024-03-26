@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class card extends Model
 {
     use HasFactory;
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     protected $table = 'card';
     protected $fillable = [
         'name',
