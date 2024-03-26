@@ -25,8 +25,8 @@ Route::post('login',[UserController::class ,'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
 Route::post('allCards',[cardController::class ,'getAllBusinessCards']);
 Route::post('createCard',[cardController::class ,'createBusinessCard']);
-// Route::post('createCard',[cardController::class ,'createBusinessCard']);
-// Route::post('createCard',[cardController::class ,'createBusinessCard']);
+Route::post('updateCard/{id}',[cardController::class ,'updateBusinessCard']);
+Route::get('deleteCard/{id}',[cardController::class ,'deleteBusinessCard']);
 
 
 Route::post('logout',[UserController::class ,'logout']);

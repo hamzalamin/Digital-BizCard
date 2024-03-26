@@ -68,15 +68,15 @@ class cardController extends Controller
             return response()->json(['message' => 'Business card not found'], 404);
         }
 
-        // if ($user->id !== $businessCard->user_id) {
-        //     return response()->json(['message' => 'Unauthorized'], 403);
-        // }
+        if ($user->id !== $businessCard->user_id) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
 
         // police service
 
-        if ($request->user()->cannot('create', card::class)) {
-            return response()->json(['message' => 'Unauthorized'], 403);
-        }
+        // if ($request->user()->cannot('create', card::class)) {
+        //     return response()->json(['message' => 'Unauthorized'], 403);
+        // }
 
         $businessCard->update($request->all());
 
@@ -100,7 +100,7 @@ class cardController extends Controller
 
 
         // police service
-        if ($user->cannot('delete', $businessCard)) {
+        if ($user->id !== $businessCard->user_id) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 
